@@ -1,0 +1,39 @@
+{
+  "name": "react-compose-booster",
+  "version": "1.0.0",
+  "description": "A set of helpful React HOCs to help manage function/component composition and control flow",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@testing-library/react": "^8.0.5",
+    "jest": "^24.8.0",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.8.0",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/horseeyephil/react-compose-booster.git"
+  },
+  "author": "Philip Gingerich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/horseeyephil/react-compose-booster/issues"
+  },
+  "homepage": "https://github.com/horseeyephil/react-compose-booster#readme"
+}

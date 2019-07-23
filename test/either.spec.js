@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 
 import either from '../src/either';
 import ifProp from '../src/ifProp'
@@ -7,23 +7,25 @@ import ifProp from '../src/ifProp'
 const DummyDiv = props => <div>{props.text}</div>;
 const DummyImg = props => <img alt={props.text} />;
 
+afterEach(cleanup);
+
 describe('The Either hoc', () => {
-  const testFn = props => props.text === 'For Alt';
+  const testFn = props => props.text === 'For InnerText';
 
   const ImageOrDiv = either(testFn, DummyImg)(DummyDiv);
 
   test('renders the "right" component if the predicate is true', () => {
-    const { queryByAltText, queryByText } = render(<ImageOrDiv text="For Alt" />);
+    const { queryByAltText, queryByText } = render(<ImageOrDiv text="For InnerText" />);
 
-    expect(queryByAltText('For Alt')).toBeNull();
-    expect(queryByText('For Alt')).toBeDefined();
+    expect(queryByAltText('For InnerText')).toBeNull();
+    expect(queryByText('For InnerText')).toBeDefined();
   });
 
   test('renders the "left" component if the predicate is false', () => {
-    const { queryByAltText, queryByText } = render(<ImageOrDiv text="For InnerText" />);
+    const { queryByAltText, queryByText } = render(<ImageOrDiv text="For Alt" />);
 
-    expect(queryByAltText('For InnerText')).toBeDefined();
-    expect(queryByText('For InnerText')).toBeNull();
+    expect(queryByAltText('For Alt')).toBeDefined();
+    expect(queryByText('For Alt')).toBeNull();
   });
 
   test('renders nothing if the predicate is false and no second argument is provided', () => {

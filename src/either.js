@@ -1,7 +1,9 @@
-const either = (testFn, Option = null) => Component =>
-  function maybeRendered(props) {
-    const Branch = Option ? Option(props) : null;
-    return testFn(props) ? Component(props) : Branch;
+import getNull from './getNull';
+
+const either = (testFn, Option = getNull) => Component =>
+  function MaybeRendered(props) {
+    const branch = testFn(props) ? Component : Option;
+    return branch(props);
   };
 
 export default either;

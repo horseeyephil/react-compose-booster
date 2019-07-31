@@ -1,4 +1,4 @@
 const takeProp = (propName, shouldMerge) => Component => props => 
-  Component(shouldMerge ? {...props, ...props[propName]} : props[propName] || {});
+  Component(shouldMerge ? Object.assign({}, props, props[propName]) : props[propName] || {});
 
   export default takeProp;

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import takeProp from './takeProp';
+import takeProp from '../takeProp/takeProp';
 
 const nestWith = (...Decoration) => Target => {
   const objectIsSupplied = typeof Decoration[0] === 'object';

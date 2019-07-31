@@ -1,8 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import either from '../src/either';
-import ifProp from '../src/ifProp'
+import { either, ifProp } from '..';
 
 const DummyDiv = props => <div>{props.text}</div>;
 const DummyImg = props => <img alt={props.text} />;
@@ -18,13 +17,13 @@ describe('The Either hoc', () => {
     const { queryByAltText, queryByText } = render(<ImageOrDiv text="For InnerText" />);
 
     expect(queryByAltText('For InnerText')).toBeNull();
-    expect(queryByText('For InnerText')).toBeDefined();
+    expect(queryByText('For InnerText')).not.toBeNull();
   });
 
   test('renders the "left" component if the predicate is false', () => {
     const { queryByAltText, queryByText } = render(<ImageOrDiv text="For Alt" />);
 
-    expect(queryByAltText('For Alt')).toBeDefined();
+    expect(queryByAltText('For Alt')).not.toBeNull();
     expect(queryByText('For Alt')).toBeNull();
   });
 
@@ -43,7 +42,7 @@ describe('The ifProp hoc', () => {
     const { queryByAltText, queryByText } = render(<ImageOrDiv text="For InnerText" />);
 
     expect(queryByAltText('For InnerText')).toBeNull();
-    expect(queryByText('For InnerText')).toBeDefined();
+    expect(queryByText('For InnerText')).not.toBeNull();
   });
 
   test('renders nothing if the prop is present', () => {

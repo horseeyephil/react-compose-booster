@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 
-import nestWith from '../src/nestWith';
+import { nestWith } from '..';
 
 const DummyDiv = props => <div className="parent">{props.children}</div>;
 const ChildA = props => <span className="dummyA">{props.subText}</span>;

@@ -1,4 +1,4 @@
-import getNull from './getNull';
+import getNull from '../getNull/getNull';
 
 const either = (testFn, Option = getNull) => Component =>
   function MaybeRendered(props) {

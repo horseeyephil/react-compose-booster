@@ -1,6 +1,6 @@
 import React from 'react';
 
- const wrapWith = (Decoration = React.Fragment, propsByKey) => (...Targets) =>
+const wrapWith = (Decoration = React.Fragment, propsByKey) => (...Targets) =>
   function WrappedProduct(props) {
 
     const wrapperProps = propsByKey ? props[propsByKey] :

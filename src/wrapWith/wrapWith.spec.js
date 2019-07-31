@@ -1,8 +1,7 @@
 import React from 'react';
 import { cleanup, render } from '@testing-library/react';
 
-import wrapWith from '../src/wrapWith';
-import { exportAllDeclaration } from '@babel/types';
+import { wrapWith } from '..';
 
 const Wrapper = props => <div className="wrapper">{props.children}</div>;
 const ChildA = props => <span className="dummyA">{props.subText}</span>;
@@ -16,9 +15,9 @@ describe('The wrapWith hoc', () => {
   const { container, queryByText } = render(<TwoInAContainer subText="I am a nested child!" />);
 
   test('renders children and passes props correctly', () => {
-    expect(container.querySelector('.dummyA')).toBeDefined();
-    expect(container.querySelector('.dummyB')).toBeDefined();
-    expect(queryByText('I am a nested child!')).toBeDefined();
+    expect(container.querySelector('.dummyA')).not.toBeNull();
+    expect(container.querySelector('.dummyB')).not.toBeNull();
+    expect(queryByText('I am a nested child!')).not.toBeNull();
     expect(container.querySelector('.wrapper').children.length).toBe(2);
   });
 
@@ -28,8 +27,8 @@ describe('The wrapWith hoc', () => {
     // this is a little tricky - by default react-testing-library wraps elements in a div for the container
     // with this option we will change the container to a UL 
     // - to show that the rendered elements have no parent between them and the container
-    const { container } = render(
-      <Neighbors />, { container: document.body.appendChild(document.createElement('ul'))});
+    const { container } = render(<Neighbors />, 
+      { container: document.body.appendChild(document.createElement('ul'))});
     expect(container.querySelector('div')).toBeNull();
     expect(container.querySelector('.dummyA').parentElement.tagName).toBe('UL');
   })
@@ -46,7 +45,7 @@ describe('The wrapper', () => {
 
   test('may recieve distinct props if a key is provided', () => {
     const { queryByText } = render(<PossibleSubHeading subHeading={{ copy: 'Render an h1!' }} />);
-    expect(queryByText('Render an h1!')).toBeDefined();
+    expect(queryByText('Render an h1!')).not.toBeNull();
   });
   test('and will not be forwarded the total props', () => {
     const { queryByText } = render(<PossibleSubHeading copy="Try to forward me!" />);

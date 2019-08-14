@@ -17,14 +17,14 @@ const update = updateDeep(state.city, 'zipcode.street.mailbox', MessagePayload)
 ```
 const Page extends React.component {
 	state = {
-	    isLoading: false,
-        data: {
+	  isLoading: false,
+    data: {
 			animals: {
 				dogs: [],
 				cats: [...]
 			}
 		},
-        display: {
+    display: {
 			button: true, 
 			nav: { 
 				links: [...],
@@ -33,13 +33,14 @@ const Page extends React.component {
 			slider: true
 		}
 	}
+
 	fetchDogs() {
 		const incomingDogs = api()
 		const updatedData = updateDeep(this.state.data, 'data.animals.dogs', incomingDogs)
 		this.setState({ data: updatedData })
 	}
 	
-	// with "merge" option set to true
+	// "merge" option set to true
 	shrinkNav() {
 		const updateDisplay = updateDeep(
 			this.state.display, 'nav.attributes', { mini: true, showAllLinks: false }, merge = true

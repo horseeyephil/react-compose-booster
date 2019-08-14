@@ -22,8 +22,7 @@ const EditPanel = props => <div><h1/>{props.children}<Dashboard/></div>
 const EditModeSlide = wrapWith(EditPanel, 'editSliders')(Slide)
 
 const SlideView = props => {
-	props.className = "fullSize" ? return <Slide {...props} />  :
-	return <EditModeSlide {...props} />
+	return props.className === "fullSize" ? <Slide {...props} />  :
+		<EditModeSlide {...props} />
 }
-<>)
 ```

@@ -68,8 +68,8 @@ const DetailedProductView = props => (
 	)
 	
 	const ProductView = branch(
-	props => props.displayExtendedDescription, 
-	nestWith(SaleFlag, ClearanceFlag, ReviewStars, ExtendedDescription)
+		props => props.displayExtendedDescription, 
+		nestWith(SaleFlag, ClearanceFlag, ReviewStars, ExtendedDescription)
 	)(RegularProductView)
 	
 ```

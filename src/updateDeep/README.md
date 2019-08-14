@@ -16,37 +16,37 @@ const update = updateDeep(state.city, 'zipcode.street.mailbox', MessagePayload)
 
 ```
 const Page extends React.component {
-	state = {
-	  isLoading: false,
+  state = {
+    isLoading: false,
     data: {
-			animals: {
-				dogs: [],
-				cats: [...]
-			}
-		},
+      animals: {
+        dogs: [],
+        cats: [...]
+      }
+    },
     display: {
-			button: true, 
-			nav: { 
-				links: [...],
-				attributes: { mini: false, showAllLinks: true, toggleSearch: false }
-			}, 
-			slider: true
-		}
-	}
+      button: true, 
+      nav: { 
+        links: [...],
+        attributes: { mini: false, showAllLinks: true, toggleSearch: false }
+      }, 
+      slider: true
+    }
+  }
 
-	fetchDogs() {
-		const incomingDogs = api()
-		const updatedData = updateDeep(this.state.data, 'data.animals.dogs', incomingDogs)
-		this.setState({ data: updatedData })
-	}
-	
-	// "merge" option set to true
-	shrinkNav() {
-		const updateDisplay = updateDeep(
-			this.state.display, 'nav.attributes', { mini: true, showAllLinks: false }, merge = true
-		)
-		this.setState({ display: updateDisplay})
-		// this.state.display.nav.attributes will equal { mini: true, showAllLinks: false, toggleSearch: false}
-	}
+  fetchDogs() {
+    const incomingDogs = api()
+    const updatedData = updateDeep(this.state.data, 'data.animals.dogs', incomingDogs)
+    this.setState({ data: updatedData })
+  }
+
+  // "merge" option set to true
+  shrinkNav() {
+    const updateDisplay = updateDeep(
+      this.state.display, 'nav.attributes', { mini: true, showAllLinks: false }, merge = true
+    )
+    this.setState({ display: updateDisplay})
+    // this.state.display.nav.attributes will equal { mini: true, showAllLinks: false, toggleSearch: false}
+  }
 }
 ```

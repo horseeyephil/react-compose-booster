@@ -21,11 +21,10 @@ This library's aim is to introduce helpful functions for decorating React compon
 
 As stated above, it was largely inspired by working with Recompose. It doesn't do anything that Recompose couldn't handle - but tweaks a few things and removes some HOC wrappers to make a few cases more streamlined.
 Furthermore, I wanted a library that included a simple, definitive "maybe" render function for React, which is included here as `either`.
-
+---
 ### either
 The "maybe" render or "null" render is one of the most in-demand patterns/utilities when writing React Components. It protects from empty displays or breaking code. A quick search will show that there are many packages published for this utility. I wanted to include a minimal one as a core function of `compose-boost` -one that is simply a higher order function, that does not require JSX syntax or influence from props.
 
----
 `either` simply runs a test function, and then will render "left" or "right" hand arguments depending on success. If no optional argument is provided, `either` defaults to a null return -making it **super concise**. It is a light syntax that can be used as a branch or a maybe.
 ```
 const GreenOrRedLight = either(props => props.batteryCharge === 100, RedComponent)(GreenComponent)

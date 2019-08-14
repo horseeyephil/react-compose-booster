@@ -15,7 +15,7 @@ const update = updateDeep(state.city, 'zipcode.street.mailbox', MessagePayload)
 - Here's how you might use it in a React context:
 
 ```
-const Page extends React.component {
+class Page extends React.component {
   state = {
     isLoading: false,
     data: {
@@ -36,17 +36,19 @@ const Page extends React.component {
 
   fetchDogs() {
     const incomingDogs = api()
-    const updatedData = updateDeep(this.state.data, 'data.animals.dogs', incomingDogs)
+    const updatedData = updateDeep(this.state.data, 'animals.dogs', incomingDogs)
     this.setState({ data: updatedData })
   }
 
   // "merge" option set to true
+
   shrinkNav() {
     const updateDisplay = updateDeep(
       this.state.display, 'nav.attributes', { mini: true, showAllLinks: false }, merge = true
     )
     this.setState({ display: updateDisplay})
-    // this.state.display.nav.attributes will equal { mini: true, showAllLinks: false, toggleSearch: false}
+
+    // this.state.display.nav.attributes -> { mini: true, showAllLinks: false, toggleSearch: false}
   }
 }
 ```

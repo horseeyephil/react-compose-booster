@@ -18,12 +18,14 @@ const OnlyFrenchCinema = ifProp('isFrench)(MovieWithFrenchSubtitles)
 ```
 
 This library's aim is to introduce helpful functions for decorating React components - to leverage functional, declarative writing style that makes code more concise and legible.
+
 As stated above, it was largely inspired by working with Recompose. It doesn't do anything that Recompose couldn't handle - but tweaks a few things and removes some HOC wrappers to make a few cases more streamlined.
 Furthermore, I wanted a library that included a simple, definitive "maybe" render function for React, which is included here as `either`.
 
-#### either
-The "maybe" render or "null" render is one of the most in-demand patterns/utilities when writing React Components. It protects from empty displays or breaking code. A quick search will show that there are many packages published for this utility. I wanted to include a very minimal, simple one as a core function of `compose-boost` -one that is simply a higher order function, that does not require JSX syntax or influence from props.
-`either` simply runs a test function, and then will render "left" or "right" hand arguments depending on success. If no optional argument is provided, `either` defaults to a null return -making it super concise. It is a light syntax that can be used as a branch or a maybe.
+### either
+The "maybe" render or "null" render is one of the most in-demand patterns/utilities when writing React Components. It protects from empty displays or breaking code. A quick search will show that there are many packages published for this utility. I wanted to include a minimal one as a core function of `compose-boost` -one that is simply a higher order function, that does not require JSX syntax or influence from props.
+
+`either` simply runs a test function, and then will render "left" or "right" hand arguments depending on success. If no optional argument is provided, `either` defaults to a null return -making it **super concise**. It is a light syntax that can be used as a branch or a maybe.
 ```
 const GreenOrRedLight = either(props => props.batteryCharge === 100, RedComponent)(GreenComponent)
 
@@ -32,21 +34,21 @@ const GreenOrRedLight = either(props => props.batteryCharge === 100, RedComponen
 
 const OnlyNotifyWhenBatteryIsLow = either(props => props.batteryCharge < 5)(GreenOrRedLight)
 
-<OnlyNotifyWhenBatteryIsLow batteryCharge={3} />
+<OnlyNotifyWhenBatteryIsLow batteryCharge={25} />
 // renders nothing
 ```
 
-##### Functions
-**either**: branch or maybe
-**ifProp**: lazy syntax either, checks for truthy prop key
-**nestWith**: give children to a Component!
-**wrapWith**: wrap one or more Components with an outer shell!
-**takeProp**: create a component that picks and flattens one of its passed props
-**quickText**: declare an html element as a string, tests for a prop key and propagates that prop as innerText children (**requires React adapter**)
+##### Compose Functions
+- **either**: branch or maybe
+- **ifProp**: lazy syntax either, checks for truthy prop key
+- **nestWith**: give children to a Component!
+- **wrapWith**: wrap one or more Components with an outer shell!
+- **takeProp**: create a component that picks and flattens one of its passed props
+- **quickText**: declare an html element as a string, tests for a prop key and propagates that prop as innerText children
 
 ##### Utilities
-**getNull**: no-op feeding a Null
-**plog**: "Tap" style log, that can wait for resolved async expression
+- **getNull**: no-op feeding a Null
+- **plog**: "Tap" style log, that can wait for resolved async expression
 
 #### More to come!
 

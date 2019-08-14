@@ -1,8 +1,8 @@
 {
-  "name": "react-compose-booster",
-  "version": "1.0.0",
+  "name": "compose-booster",
+  "version": "1.0.3",
   "description": "A set of helpful React HOCs to help manage function/component composition and control flow",
-  "main": "index.js",
+  "main": "lib",
   "directories": {
     "test": "test"
   },
@@ -20,6 +20,7 @@
     "react-dom": "^16.8.6"
   },
   "scripts": {
+    "prepublish": "npm run compile:lib",
     "test": "jest",
     "compile:lib": "./node_modules/.bin/babel src --out-dir lib --ignore **/*.spec.js"
   },

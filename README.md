@@ -1,4 +1,4 @@
-## Compose Booster
+# Compose Booster
 A set of helpful, minimal HOFs to help manage function/Component composition and control flow. 
 Imagined as a helpful extension to acdlite's highly recommended Recompose library - Like a "booster" pack. 
 Can be used with React or vanilla JS.
@@ -25,6 +25,7 @@ Furthermore, I wanted a library that included a simple, definitive "maybe" rende
 ### either
 The "maybe" render or "null" render is one of the most in-demand patterns/utilities when writing React Components. It protects from empty displays or breaking code. A quick search will show that there are many packages published for this utility. I wanted to include a minimal one as a core function of `compose-boost` -one that is simply a higher order function, that does not require JSX syntax or influence from props.
 
+---
 `either` simply runs a test function, and then will render "left" or "right" hand arguments depending on success. If no optional argument is provided, `either` defaults to a null return -making it **super concise**. It is a light syntax that can be used as a branch or a maybe.
 ```
 const GreenOrRedLight = either(props => props.batteryCharge === 100, RedComponent)(GreenComponent)
@@ -37,18 +38,20 @@ const OnlyNotifyWhenBatteryIsLow = either(props => props.batteryCharge < 5)(Gree
 <OnlyNotifyWhenBatteryIsLow batteryCharge={25} />
 // renders nothing
 ```
-
+---
+## Methods
 ##### Compose Functions
-- **either**: branch or maybe
-- **ifProp**: lazy syntax either, checks for truthy prop key
-- **nestWith**: give children to a Component!
-- **wrapWith**: wrap one or more Components with an outer shell!
-- **takeProp**: create a component that picks and flattens one of its passed props
-- **quickText**: declare an html element as a string, tests for a prop key and propagates that prop as innerText children
+- **[either](src/either)**: branch or maybe
+- **[ifProp](src/ifProp)**: lazy syntax either, checks for truthy prop key
+- **[nestWith](src/nestWith)**: give children to a Component!
+- **[wrapWith](src/wrapWith)**: wrap one or more Components with an outer shell!
+- **[takeProp](src/takeProp)**: create a component that picks and flattens one of its passed props
+- **[quickText](src/quickText)**: declare an html element as a string, tests for a prop key and propagates that prop as innerText children
 
 ##### Utilities
-- **getNull**: no-op feeding a Null
-- **plog**: "Tap" style log, that can wait for resolved async expression
+- **[updateDeep](src/updateDeep)**: Immutably deep clone an object with an updated value at a "path" - Common pattern for setting state in React
+- **[getNull](src/getNull)**: no-op feeding a Null
+- **[plog](src/plog)**: "Tap" style log, that can wait for resolved async expression
 
 #### More to come!
 

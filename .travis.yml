@@ -2,12 +2,12 @@ language: node_js
 node_js:
   - "12.13"
 
+before_deploy: npm run compile:lib
 deploy:
   provider: npm
   email: horseeyephil@gmail.com
   api_key: 
     secure: "FoPBrmShsbYad7DSIvLwXk7RveftsMXIovikb2mDwS3s/0gYm8a/2RAkto3Xq4BKi2kN4lJaRH/6UKO8k0eyr4mEYBFa+v4+i/id99Ts6Li+CIaUS8sA/y6W1rCb1S2EdyBAja/k/As3nUbqcORt1bnNcsSyZOrcUEdEMpMlCZ5LJbjTx4kEg5VciBjKx1D7BlESzfd+D5nGRtCz15C0bVAESLS30saKtU/UDLSYqg266mIoXXPiP+OSx4j567T/uiHXG5RH/XPO3GbJVeHFtsEoqH2OZq+MsIWPWmL4KNO79pm5GcZuZsR07nMYZb3cCP+qSUzlC/VSEpQibB61FaERoG+sfmR4u3uSuXD7vTapNiO5QaEuIBLZV37YeBhc2/3BnayEUnoFwLeAsxRhu/feYmUg7bTOqYfb/RYdiRBeb3Hf6C+ESCRkWRq6VfJuSZJeHxW9PwvJEqPT9nrpKUTL8VFE1jFFL2LqltXueOgLGFZ2KigH+9OeYIUtWmbXzFj1AqDmxCH94BSxYsMri941YazoyQ4FWpV5UtUsVtJlaiTWqalNi2SoiASV/2LG3opRSRyQaz/fNwjJxvYHfCBx3gV7mFFkSNd4iE0Re46TXxgcAH35EpVa8xQZB3DxIb8xsgVZHzA+cHx5Qh8Vs//bIzc5EwqDHLpYNlgPQLg="
-  
-on:
-  tags: true
-  branch: production
+  on:
+    tags: true
+    branch: production

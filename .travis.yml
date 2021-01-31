@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "12.13"
 
+before_deploy: npm run compile:lib
 deploy:
   provider: npm
   email: horseeyephil@gmail.com
